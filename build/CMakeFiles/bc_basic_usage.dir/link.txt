@@ -1,0 +1,1 @@
+/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/bc_basic_usage.dir/examples/bc_basic_usage.cpp.o -o bc_basic_usage  libbinarycode.a _deps/binarycodegenmatproj-build/libbinarycodegenmat.a _deps/binarycodewordproj-build/libbinarycodeword.a

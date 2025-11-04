@@ -1,0 +1,5 @@
+if(EXISTS "/Users/nathan/github/BinaryCode/build/_deps/binarycodewordproj-build/test_BinaryCodeWord[1]_tests.cmake")
+  include("/Users/nathan/github/BinaryCode/build/_deps/binarycodewordproj-build/test_BinaryCodeWord[1]_tests.cmake")
+else()
+  add_test(test_BinaryCodeWord_NOT_BUILT test_BinaryCodeWord_NOT_BUILT)
+endif()

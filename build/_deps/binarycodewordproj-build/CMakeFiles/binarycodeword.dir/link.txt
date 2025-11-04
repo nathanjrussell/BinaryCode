@@ -1,0 +1,2 @@
+/usr/bin/ar qc libbinarycodeword.a CMakeFiles/binarycodeword.dir/src/BinaryCodeWord.cpp.o
+/usr/bin/ranlib libbinarycodeword.a

@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/nathan/github/BinaryCode/build/_deps/binarycodegenmatproj-subbuild/CMakeFiles/binarycodegenmatproj-populate"
+		},
+		{
+			"file" : "/Users/nathan/github/BinaryCode/build/_deps/binarycodegenmatproj-subbuild/CMakeFiles/binarycodegenmatproj-populate.rule"
+		},
+		{
+			"file" : "/Users/nathan/github/BinaryCode/build/_deps/binarycodegenmatproj-subbuild/CMakeFiles/binarycodegenmatproj-populate-complete.rule"
+		},
+		{
+			"file" : "/Users/nathan/github/BinaryCode/build/_deps/binarycodegenmatproj-subbuild/binarycodegenmatproj-populate-prefix/src/binarycodegenmatproj-populate-stamp/binarycodegenmatproj-populate-build.rule"
+		},
+		{
+			"file" : "/Users/nathan/github/BinaryCode/build/_deps/binarycodegenmatproj-subbuild/binarycodegenmatproj-populate-prefix/src/binarycodegenmatproj-populate-stamp/binarycodegenmatproj-populate-configure.rule"
+		},
+		{
+			"file" : "/Users/nathan/github/BinaryCode/build/_deps/binarycodegenmatproj-subbuild/binarycodegenmatproj-populate-prefix/src/binarycodegenmatproj-populate-stamp/binarycodegenmatproj-populate-download.rule"
+		},
+		{
+			"file" : "/Users/nathan/github/BinaryCode/build/_deps/binarycodegenmatproj-subbuild/binarycodegenmatproj-populate-prefix/src/binarycodegenmatproj-populate-stamp/binarycodegenmatproj-populate-install.rule"
+		},
+		{
+			"file" : "/Users/nathan/github/BinaryCode/build/_deps/binarycodegenmatproj-subbuild/binarycodegenmatproj-populate-prefix/src/binarycodegenmatproj-populate-stamp/binarycodegenmatproj-populate-mkdir.rule"
+		},
+		{
+			"file" : "/Users/nathan/github/BinaryCode/build/_deps/binarycodegenmatproj-subbuild/binarycodegenmatproj-populate-prefix/src/binarycodegenmatproj-populate-stamp/binarycodegenmatproj-populate-patch.rule"
+		},
+		{
+			"file" : "/Users/nathan/github/BinaryCode/build/_deps/binarycodegenmatproj-subbuild/binarycodegenmatproj-populate-prefix/src/binarycodegenmatproj-populate-stamp/binarycodegenmatproj-populate-test.rule"
+		},
+		{
+			"file" : "/Users/nathan/github/BinaryCode/build/_deps/binarycodegenmatproj-subbuild/binarycodegenmatproj-populate-prefix/src/binarycodegenmatproj-populate-stamp/binarycodegenmatproj-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"binarycodegenmatproj-populate"
+		],
+		"name" : "binarycodegenmatproj-populate"
+	}
+}

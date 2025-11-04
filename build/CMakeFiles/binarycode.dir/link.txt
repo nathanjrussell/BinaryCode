@@ -1,0 +1,2 @@
+/usr/bin/ar qc libbinarycode.a CMakeFiles/binarycode.dir/src/BinaryCode.cpp.o
+/usr/bin/ranlib libbinarycode.a

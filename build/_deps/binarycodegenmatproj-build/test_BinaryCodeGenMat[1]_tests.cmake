@@ -1,0 +1,7 @@
+add_test([=[BinaryCodeGenMat.ConstructAndGetters]=]  /Users/nathan/github/BinaryCode/build/_deps/binarycodegenmatproj-build/test_BinaryCodeGenMat [==[--gtest_filter=BinaryCodeGenMat.ConstructAndGetters]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[BinaryCodeGenMat.ConstructAndGetters]=]  PROPERTIES WORKING_DIRECTORY /Users/nathan/github/BinaryCode/build/_deps/binarycodegenmatproj-build SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[BinaryCodeGenMat.Augment]=]  /Users/nathan/github/BinaryCode/build/_deps/binarycodegenmatproj-build/test_BinaryCodeGenMat [==[--gtest_filter=BinaryCodeGenMat.Augment]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[BinaryCodeGenMat.Augment]=]  PROPERTIES WORKING_DIRECTORY /Users/nathan/github/BinaryCode/build/_deps/binarycodegenmatproj-build SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[BinaryCodeGenMat.Multiply]=]  /Users/nathan/github/BinaryCode/build/_deps/binarycodegenmatproj-build/test_BinaryCodeGenMat [==[--gtest_filter=BinaryCodeGenMat.Multiply]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[BinaryCodeGenMat.Multiply]=]  PROPERTIES WORKING_DIRECTORY /Users/nathan/github/BinaryCode/build/_deps/binarycodegenmatproj-build SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+set(  test_BinaryCodeGenMat_TESTS BinaryCodeGenMat.ConstructAndGetters BinaryCodeGenMat.Augment BinaryCodeGenMat.Multiply)

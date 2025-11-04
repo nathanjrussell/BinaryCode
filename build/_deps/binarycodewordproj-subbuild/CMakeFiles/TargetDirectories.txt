@@ -1,0 +1,3 @@
+/Users/nathan/github/BinaryCode/build/_deps/binarycodewordproj-subbuild/CMakeFiles/binarycodewordproj-populate.dir
+/Users/nathan/github/BinaryCode/build/_deps/binarycodewordproj-subbuild/CMakeFiles/edit_cache.dir
+/Users/nathan/github/BinaryCode/build/_deps/binarycodewordproj-subbuild/CMakeFiles/rebuild_cache.dir
