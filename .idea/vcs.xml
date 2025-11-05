@@ -4,5 +4,7 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/build/_deps/binarycodegenmatproj-src" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/build/_deps/binarycodewordproj-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cmake-build-debug/_deps/binarycodegenmatproj-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cmake-build-debug/_deps/binarycodewordproj-src" vcs="Git" />
   </component>
 </project>

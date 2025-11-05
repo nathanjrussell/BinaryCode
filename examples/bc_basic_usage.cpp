@@ -53,3 +53,13 @@ int main() {
 
     return 0;
 }
+
+unsigned long long BinaryCode::get_automorphism_group_size() {
+    if (automorphism_group_size_ != 0) return automorphism_group_size_;
+    compute_automorphism_group();
+}
+
+void BinaryCode::compute_automorphism_group() {
+    // To be implemented: compute automorphism group size
+    automorphism_group_size_ = 1; // placeholder
+}

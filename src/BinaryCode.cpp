@@ -2,7 +2,7 @@
 
 
 static int find_pivot_row(const std::vector<BinaryCodeWord>& rows, int start_row, int col) {
-    for (int r = start_row; r < (int)rows.size(); ++r) {
+    for (int r = start_row; r < static_cast<int>(rows.size()); ++r) {
         if (rows[r].getBit(col)) return r;
     }
     return -1;
@@ -13,7 +13,8 @@ BinaryCode::BinaryCode(const BinaryCodeGenMat& G)
       G_rref_(G),   // must initialize (no default ctor)
       G_sys_(G),    // must initialize (no default ctor)
       k_(0),
-      n_(G.length())
+      n_(G.length()),
+    wt_dist_(nullptr)
 
 {
     G_rref_ = compute_rref_no_col_swaps(G_orig_, k_);
@@ -90,8 +91,8 @@ BinaryCodeGenMat BinaryCode::compute_systematic_with_col_swaps(const BinaryCodeG
         if (piv != lead_row) std::swap(rows[piv], rows[lead_row]);
         // clear other rows in this pivot column
         for (int r = 0; r < k; ++r) {
-            if (r == lead_row) continue;
-            if (rows[r].getBit(col)) rows[r] += rows[lead_row];
+            if (r == lead_row) { continue; }
+            if (rows[r].getBit(col)) { rows[r] += rows[lead_row]; }
         }
         lead_row++;
         col++;
@@ -109,11 +110,9 @@ void BinaryCode::compute_weight_distribution()
     for (int i=0; i<=n_; ++i) wt_dist_[i] = 0;
     int max_weight = 0;
     int min_weight = n_;
-    for (int i=0; i<1<<k_; ++i)
-    {
+    for (int i=0; i<1<<k_; ++i) {
         BinaryCodeWord unencoded(k_);
-        for (int j=0; j<k_; ++j)
-        {
+        for (int j=0; j<k_; ++j) {
             if (i & (1<<j))
                 unencoded.setBit(j, 1);
         }
@@ -128,21 +127,20 @@ void BinaryCode::compute_weight_distribution()
 
 
 int BinaryCode::min_wt() {
-    if (min_wt_ == 0) compute_weight_distribution();
+    if (min_wt_ == 0) { compute_weight_distribution(); }
     return min_wt_;
 }
 
 int BinaryCode::get_weight_distribution(int weight) {
-    if (wt_dist_ == nullptr) compute_weight_distribution();
-    if (weight < 0 || weight > n_) return 0;
+    if (wt_dist_ == nullptr) { compute_weight_distribution(); }
+    if (weight < 0 || weight > n_) { return 0; }
     return wt_dist_[weight];
 }
 
 std::vector<int> BinaryCode::get_weight_distribution() {
     std::vector<int> dist;
-    if (wt_dist_ == nullptr) compute_weight_distribution();
-    for (int i=0; i<=n_; ++i)
-    {
+    if (wt_dist_ == nullptr) { compute_weight_distribution(); }
+    for (int i=0; i<=n_; ++i) {
         dist.push_back(wt_dist_[i]);
     }
     return dist;

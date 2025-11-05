@@ -18,6 +18,8 @@ public:
     const BinaryCodeGenMat& systematic()const { return G_sys_;  }
     int get_weight_distribution(int weight);
     std::vector<int> get_weight_distribution();
+    unsigned long long get_automorphism_group_size();
+    void compute_automorphism_group();
 
 private:
     static BinaryCodeGenMat compute_rref_no_col_swaps(const BinaryCodeGenMat& G, int& out_rank);
@@ -35,6 +37,7 @@ private:
     int n_ = 0;
     int max_wt_ = 0;
     int min_wt_ = 0;
+    unsigned long long automorphism_group_size_ = 0;
 };
 
 #endif // BINARY_CODE_HPP
