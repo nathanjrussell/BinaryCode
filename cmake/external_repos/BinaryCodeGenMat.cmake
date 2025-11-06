@@ -1,7 +1,7 @@
 
 # Overrideable from command line
 set(BINARY_CODE_GEN_MAT_GIT_URL "https://github.com/nathanjrussell/BinaryCodeGenMatrix.git" CACHE STRING "Git URL for BinaryCodeGenMat")
-set(BINARY_CODE_GEN_MAT_FETCH_TAG "2.14.0" CACHE STRING "Tag/commit to fetch for BinaryCodeGenMat")
+set(BINARY_CODE_GEN_MAT_FETCH_TAG "2.15.0" CACHE STRING "Tag/commit to fetch for BinaryCodeGenMat")
 
 # Try installed package first (quiet)
 find_package(BinaryCodeGenMatrix ${BINARY_CODE_GEN_MAT_FETCH_TAG} QUIET)
