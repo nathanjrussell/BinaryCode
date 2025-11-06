@@ -1,5 +1,0 @@
-if(EXISTS "/Users/nathan/github/BinaryCode/build/_deps/binarycodegenmatproj-build/test_BinaryCodeGenMat[1]_tests.cmake")
-  include("/Users/nathan/github/BinaryCode/build/_deps/binarycodegenmatproj-build/test_BinaryCodeGenMat[1]_tests.cmake")
-else()
-  add_test(test_BinaryCodeGenMat_NOT_BUILT test_BinaryCodeGenMat_NOT_BUILT)
-endif()

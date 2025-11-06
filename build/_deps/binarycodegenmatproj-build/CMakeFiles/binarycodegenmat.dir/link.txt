@@ -1,2 +1,0 @@
-/usr/bin/ar qc libbinarycodegenmat.a CMakeFiles/binarycodegenmat.dir/src/BinaryCodeGenMat.cpp.o
-/usr/bin/ranlib libbinarycodegenmat.a

@@ -1,1 +1,0 @@
-/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/test_BinaryCode.dir/tests/test_BinaryCode.cpp.o -o test_BinaryCode  libbinarycode.a lib/libgtest_main.a _deps/binarycodegenmatproj-build/libbinarycodegenmat.a _deps/binarycodewordproj-build/libbinarycodeword.a lib/libgtest.a

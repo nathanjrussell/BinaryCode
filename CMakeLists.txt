@@ -1,33 +1,24 @@
 cmake_minimum_required(VERSION 3.16)
-project(BinaryCode VERSION 1.3.0 LANGUAGES CXX)
-
-find_package(BinaryCodeGenMatrix 1.3.0 QUIET)
-find_package(BinaryCodeWord 2.0.3 QUIET)
-
-
-include(FetchContent)
-if(NOT BinaryCodeWord_FOUND)
-  set(BINARY_CODE_WORD_GIT_URL "https://github.com/nathanjrussell/BinaryCodeWord.git")
-  set(BINARY_CODE_WORD_VERSION "2.0.2")
-  message(STATUS "BinaryCodeWord not found; fetching from ${BINARY_CODE_WORD_GIT_URL} ${BINARY_CODE_WORD_VERSION}")
-  FetchContent_Declare(
-    BinaryCodeWordProj
-    GIT_REPOSITORY ${BINARY_CODE_WORD_GIT_URL}
-    GIT_TAG        ${BINARY_CODE_WORD_VERSION}
-  )
-  FetchContent_MakeAvailable(BinaryCodeWordProj)
+if(POLICY CMP0135)
+  cmake_policy(SET CMP0135 NEW)
 endif()
-if(NOT BinaryCodeGenMat_FOUND)
-  set(BINARY_CODE_GEN_MAT_GIT_URL "https://github.com/nathanjrussell/BinaryCodeGenMatrix.git")
-  set(BINARY_CODE_GEN_MAT_VERSION "1.2.0")
-  message(STATUS "BinaryCodeGenMat not found; fetching from ${BINARY_CODE_GEN_MAT_GIT_URL} tag ${BINARY_CODE_GEN_MAT_VERSION}")
-  FetchContent_Declare(
-    BinaryCodeGenMatProj
-    GIT_REPOSITORY ${BINARY_CODE_GEN_MAT_GIT_URL}
-    GIT_TAG        ${BINARY_CODE_GEN_MAT_VERSION}
-  )
-  FetchContent_MakeAvailable(BinaryCodeGenMatProj)
+# Read project version from `VERSION.txt` and use it in project()
+set(VERSION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/VERSION.txt")
+if(NOT EXISTS "${VERSION_FILE}")
+  message(FATAL_ERROR "Missing ${VERSION_FILE} - create it with the project version (e.g. 2.0.2)")
 endif()
+
+file(READ "${VERSION_FILE}" _version_raw)
+string(STRIP "${_version_raw}" PROJECT_VERSION)
+
+if(NOT PROJECT_VERSION MATCHES "^[0-9]+\\.[0-9]+\\.[0-9]+$")
+  message(WARNING "Read '${PROJECT_VERSION}' from ${VERSION_FILE} which may not match X.Y.Z format")
+endif()
+
+project(BinaryCode VERSION ${PROJECT_VERSION} LANGUAGES CXX)
+MESSAGE(STATUS "Configuring BinaryCode version ${PROJECT_VERSION}")
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/external_repos.cmake)
+
 
 add_library(binarycode src/BinaryCode.cpp)
 add_library(BinaryCode::binarycode ALIAS binarycode)
@@ -48,6 +39,7 @@ target_compile_features(bc_basic_usage PRIVATE cxx_std_17)
 include(CTest)
 option(BINARYCODE_BUILD_TESTS "Build unit tests" ON)
 if(BINARYCODE_BUILD_TESTS AND BUILD_TESTING)
+  include(FetchContent)
   FetchContent_Declare(
     googletest
     URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.zip
