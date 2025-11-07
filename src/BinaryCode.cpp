@@ -107,23 +107,67 @@ void BinaryCode::compute_weight_distribution()
     // To be implemented: compute weight distribution of the code
     if (wt_dist_) return; // already computed
     wt_dist_ = new int[n_ + 1];
+    //initialize 2d array
+    col_counts_by_wt_ = new int*[n_ + 1];
+    for (int i = 0; i <= n_; ++i) {
+        col_counts_by_wt_[i] = new int[n_];
+        for (int j = 0; j < n_; ++j) {
+            col_counts_by_wt_[i][j] = 0;
+        }
+    }
     for (int i=0; i<=n_; ++i) wt_dist_[i] = 0;
     int max_weight = 0;
     int min_weight = n_;
     for (int i=0; i<1<<k_; ++i) {
         BinaryCodeWord unencoded(k_);
         for (int j=0; j<k_; ++j) {
-            if (i & (1<<j))
-                unencoded.setBit(j, 1);
+            if (i & (1<<j)) { unencoded.setBit(j, 1); }
         }
-        int wt = (unencoded * G_sys_).weight();
+        BinaryCodeWord encoded = unencoded * G_sys_;
+        int wt = encoded.weight();
+        for (int j=0; j<n_; ++j) {
+            col_counts_by_wt_[wt][j] += encoded.getBit(j);
+        }
         if (wt > max_weight) { max_weight = wt; }
         if (wt > 0 && wt < min_weight) { min_weight = wt; }
         wt_dist_[wt]++;
     }
     min_wt_ = min_weight;
     max_wt_ = max_weight;
+    identify_column_permutation_candidates();
 }
+
+void BinaryCode::identify_column_permutation_candidates() {
+    if (wt_dist_ == nullptr) { compute_weight_distribution(); }
+    int* perm_candidate_groups_ = new int[n_];
+    for (int i=0; i<n_; ++i) { perm_candidate_groups_[i] = i; }
+
+    for (int j = 0; j < n_; ++j) {
+        if (perm_candidate_groups_[j] != j) { continue; } // already assigned to a group
+        for (int k = j+1; k < n_; ++k) {
+            if (perm_candidate_groups_[k] != k) { continue; } // already assigned to a group
+            bool same = true;
+            for (int w = 0; w <= n_; ++w) {
+                if (col_counts_by_wt_[w][j] != col_counts_by_wt_[w][k]) {
+                    same = false;
+                    break;
+                }
+            }
+            if (same) { perm_candidate_groups_[k] = j; }
+        }
+    }
+    // count number of groups
+    int num_perm_candidates_groups_ = 0;
+    for (int i = 0; i < n_; ++i) {
+        if (perm_candidate_groups_[i] == i) {
+            std::set<int> perm_candidate_set;
+            perm_candidates_sets_.push_back(perm_candidate_set);
+        }
+        perm_candidates_sets_[perm_candidate_groups_[i]].insert(i);
+    }
+
+}
+
 
 
 int BinaryCode::min_wt() {

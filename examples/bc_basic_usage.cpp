@@ -36,13 +36,14 @@ int main() {
 
     BinaryCodeGenMat gen3(18,36);
     for (int i = 0; i < 18; ++i) {
-        gen3.setEntry(i,i,1);
+        gen3.setEntry(i,i+18,1);
         for (int j = 0; j < 18; ++j) {
-            gen3.setEntry(i,18 + j, i==j ? 0 : 1);
+            gen3.setEntry(i, j, i==j ? 0 : 1);
         }
     }
     std::cout << "Gen3 matrix:\n" << gen3 << '\n';
     BinaryCode code3(gen3);
+    std::cout<< "Gen3 Systematic:\n" << code3.systematic() << '\n';
     std::cout << "Code3 n = " << code3.length() << ", k = " << code3.dimension() << "\n";
 
     for (int wt = 0; wt <= 36; ++wt) {
@@ -54,12 +55,3 @@ int main() {
     return 0;
 }
 
-unsigned long long BinaryCode::get_automorphism_group_size() {
-    if (automorphism_group_size_ != 0) return automorphism_group_size_;
-    compute_automorphism_group();
-}
-
-void BinaryCode::compute_automorphism_group() {
-    // To be implemented: compute automorphism group size
-    automorphism_group_size_ = 1; // placeholder
-}

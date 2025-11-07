@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <stdexcept>
+#include <set>
 #include "BinaryCodeWord.hpp"
 #include "BinaryCodeGenMat.hpp"
 
@@ -25,6 +26,7 @@ private:
     static BinaryCodeGenMat compute_rref_no_col_swaps(const BinaryCodeGenMat& G, int& out_rank);
     static BinaryCodeGenMat compute_systematic_with_col_swaps(const BinaryCodeGenMat& G, int rank);
     void compute_weight_distribution();
+    void identify_column_permutation_candidates();
     int min_wt();
     static void swap_columns(std::vector<BinaryCodeWord>& rows, int a, int b);
 
@@ -33,6 +35,8 @@ private:
     BinaryCodeGenMat G_rref_;
     BinaryCodeGenMat G_sys_;
     int *wt_dist_;
+    int **col_counts_by_wt_;
+    std::vector<std::set<int>> perm_candidates_sets_;
     int k_ = 0;
     int n_ = 0;
     int max_wt_ = 0;
